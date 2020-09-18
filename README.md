@@ -1,11 +1,3 @@
-[![Contributors][contributors-shield]][contributors-url] 
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![Apache License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
   <h2 align="center">Covid-19 Radiology</h>
 
   <h4 align="center">
@@ -15,45 +7,11 @@
   </p>
 </p>
 
-<!-- TABLE OF CONTENTS -->
-## Table of Contents
-
-- [Table of Contents](#table-of-contents)
-- [Motivation](#motivation)
-- [Instructions](#instructions)
-- [Getting Started](#getting-started)
-  - [Installation](#installation)
-- [Usage](#usage)
-- [Demo](#demo)
-- [Technologies Used](#technologies-used)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
-
-
-## Motivation
-- The project was primarily made to tackle a myth - "Deep Learning is only useful for Big Data".
-
-## Instructions
-
 
 <br></br>
 ## Demo
 Link: [Deploy on colab in 2 mins](https://colab.research.google.com)
 
-
-<!-- ## Run
-> Step 1
-### Linux / Mac OS users
-### Windows Users
-> Step 2
-
-## Deployement on Google Cloud Platform
-## Technical Aspect
-## Motivation
-## Overview
-## Installation -->
 
 Directory Tree
 ------------
@@ -121,17 +79,11 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 
 
 ## Technologies Used
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+1. Keras
+2. Python
+3. Streamlit
+4. Docker
+5. AWS
 
 
 ## License
@@ -152,32 +104,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 ## Credits
-- [Rohit Swami]
+- [Uday Lunawat - README Structure](https://github.com/udaylunawat/Automatic-License-Plate-Recognition)
 
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
 
-<p align="center"> Made with :blue_heart: for India
 
-[contributors-shield]: https://img.shields.io/github/contributors/prasannarangam21/COVID-19-Radiography
 
-[contributors-url]: https://github.com/prasannarangam21/COVID-19-Radiography/graphs/contributors
-
-[forks-shield]: https://img.shields.io/github/forks/prasannarangam21/COVID-19-Radiography.svg?style=flat-square
-
-[forks-url]: https://github.com/prasannarangam21/COVID-19-Radiography/network/members
-
-[stars-shield]: https://img.shields.io/github/stars/prasannarangam21/COVID-19-Radiography.svg?style=flat-square
-
-[stars-url]: https://github.com/prasannarangam21/COVID-19-Radiography/stargazers
-
-[issues-shield]: https://img.shields.io/github/issues/prasannarangam21/COVID-19-Radiography.svg?style=flat-square
-
-[issues-url]: https://github.com/prasannarangam21/COVID-19-Radiography/issues
-
-[license-shield]: https://img.shields.io/github/license/prasannarangam21/COVID-19-Radiography.svg?style=flat-square
-
-[license-url]: https://github.com/prasannarangam21/COVID-19-Radiography/blob/master/LICENSE
-
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-
-[linkedin-url]: https://linkedin.com/in/lprangam
