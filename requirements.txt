@@ -1,0 +1,12 @@
+# local package
+-e .
+
+opencv-python
+kaggle
+tensorflow
+seaborn
+pyngrok
+sklearn
+streamlit-nightly
+kaleido
+plotly>=4.4.1
