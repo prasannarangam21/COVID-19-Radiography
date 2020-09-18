@@ -1,4 +1,4 @@
-  <h2 align="center">Covid-19 Radiology</h>
+  <h2 align="center">Covid-19 Radiography</h>
 
   <h4 align="center">
   <p align="center">
