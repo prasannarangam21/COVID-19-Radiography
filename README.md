@@ -2,20 +2,17 @@
 
   <h4 align="center">
   <p align="center">
-    Detects Covid-19 and Pneumonia using CT-scans & Deep Learning
+    Detecting Covid-19 and Pneumonia cases using CT-scans & Deep Learning
     </h4>
   </p>
 </p>
-
-
 
 <br></br>
 ## Demo
 Link: [Deploy on colab in 2 mins](https://colab.research.google.com)
 
-
-Directory Tree
-------------
+Directory Structure of the project
+----------------------------------
 
     ├── data
     │   ├── sample_images                 <- Sample images for inference
@@ -68,14 +65,6 @@ Directory Tree
     │                                        generated with `pip freeze > requirements.txt`
     └── setup.py                          <- makes project pip installable (pip install -e .) so src can be imported
 
-
---------
-## Bug / Feature Request
-If you find a bug (the website couldn't handle the query and / or gave undesired results), kindly open an issue [here](https://github.com/prasannarangam21) by including your search query and the expected result.
-
-If you'd like to request a new function, feel free to do so by opening an issue [here](https://github.com/prasannarangam21). Please include sample queries and their corresponding results.
-
-
 ## Technologies Used
 
 1) Keras
@@ -84,3 +73,4 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 4) Docker
 5) AWS
 
+## 
