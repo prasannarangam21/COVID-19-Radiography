@@ -7,7 +7,7 @@ PRETRAINED_MODEL = 'output/models/inference/base_model_covid.h5'
 
 #============================ Live Data config ==========================
 # https://rapidapi.com/astsiatsko/api/coronavirus-monitor
-rapid_api_key = "https://rapidapi.com/astsiatsko/api/covid19-monitor-pro."
+rapid_api_key = "56d6fa1a32msh9729d1f781f72abp1514bajsn478dbbe50169"
 
 
 #============================ Model config ==========================
