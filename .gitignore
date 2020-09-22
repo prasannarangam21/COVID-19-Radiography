@@ -137,3 +137,4 @@ dmypy.json
 /data/3_processed/
 kaggle.json
 /output/models
+/src/config.py
