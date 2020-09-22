@@ -42,7 +42,7 @@ from src.config import rapid_api_key, PRETRAINED_MODEL, PROCESSED_DATA_PATH, cla
 #============================ About ==========================
 def about():
 
-    st.info("Built with Streamlit by [Uday 😎](http://udaylunawat.github.io/)")
+    st.info("Built with Streamlit by [Prasanna 😎](https://github.com/prasannarangam21)")
 
 #================================= Functions =================================
 # @st.cache(suppress_st_warning=True)
@@ -63,8 +63,8 @@ history = joblib.load('output/history.pkl')
 image = None, None
 img_size = 400
 
-st.sidebar.markdown("## COVID-19 Radiology")
-st.sidebar.markdown("Made with :heart: by [Uday Lunawat](http://udaylunawat.github.io/)")
+st.sidebar.markdown("## COVID-19 Radiography")
+st.sidebar.markdown("Made with by [Prasanna](https://github.com/prasannarangam21)")
 
 
 st.sidebar.info(__doc__)
