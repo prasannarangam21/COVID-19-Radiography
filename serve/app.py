@@ -14,34 +14,31 @@ st.set_option('deprecation.showfileUploaderEncoding', False)
 from os import listdir
 from os.path import isfile, join
 import cv2
-import numpy as np
-from PIL import Image
+import joblib
 import time
 import random
+import numpy as np
+from PIL import Image
 import requests
 import pandas as pd
-import tensorflow as tf
-tf.keras.backend.clear_session()
+from tensorflow.keras import backend as k
+from tensorflow.keras.models import load_model
 
-import requests
 import io
 
-from sklearn.metrics import confusion_matrix
-
-# basic visualization package
-import matplotlib.pyplot as plt
-
-# advanced ploting
 import seaborn as sns
+import matplotlib.pyplot as plt
 
 # interactive visualization
 import plotly.express as px
 import plotly.graph_objs as go
-# import plotly.figure_factory as ff
 from plotly.subplots import make_subplots
 
 from src.visualization.visualize import metrics_plotly, plot_map, counts_bar
+from src.data.make_dataset import live_data
 from src.data.preprocess import covid_stats
+from src.config import rapid_api_key, PRETRAINED_MODEL, PROCESSED_DATA_PATH, class_dict
+
 #============================ About ==========================
 def about():
 
@@ -59,30 +56,23 @@ def streamlit_preview_image(image):
 
 #======================== Time To See The Magic ===========================
 
-# https://rapidapi.com/astsiatsko/api/coronavirus-monitor
-url = "https://coronavirus-monitor.p.rapidapi.com/coronavirus/cases_by_country.php"
-
-headers = {
-    'x-rapidapi-host': "coronavirus-monitor.p.rapidapi.com",
-    'x-rapidapi-key': "dd8d4e05e8mshc5ab62dcd8a5f08p14b028jsna2726a63a74d"
-    }
-
-response = requests.request("GET", url, headers=headers)
-
+response = live_data(rapid_api_key)
+data = pd.read_csv(PROCESSED_DATA_PATH)
+# Load the history from the file 
+history = joblib.load('output/history.pkl')
+image = None, None
+img_size = 400
 
 st.sidebar.markdown("## COVID-19 Radiology")
 st.sidebar.markdown("Made with :heart: by [Uday Lunawat](http://udaylunawat.github.io/)")
 
-image = None, None
-img_size = 400
+
 st.sidebar.info(__doc__)
 activities = ["Data Visualization","Detector","Performance Metrics","About"]
 choice = st.sidebar.radio("Go to", activities)
 
-class_dict = {0:'COVID-19',
-              1:'NORMAL',
-              2:'Viral Pneumonia'}
-# loaded_model = tf.keras.models.load_model("output/models/inference/base_model_covid.h5")
+k.clear_session()
+model = load_model(PRETRAINED_MODEL)
 if choice == "Detector":
 
     st.write("## Upload your own image")
@@ -147,30 +137,34 @@ if choice == "Detector":
         if predictor:
             test_image = cv2.resize(np.array(image), (224,224),interpolation=cv2.INTER_NEAREST)
             test_image = np.expand_dims(test_image,axis=0)
-            probs = loaded_model.predict(test_image)
+            probs = model.predict(test_image)
             pred_class = np.argmax(probs)
-
             pred_class = class_dict[pred_class]
 
             st.sidebar.success('Prediction: '+pred_class)
 
+
 elif choice == "Data Visualization":
 
-    country_wise = covid_stats(response)
+    country_wise, updated_at = covid_stats(response)
     st.title("Country wise data")
+    st.write("**Data Updated at**: {}".format(updated_at))
     st.write(country_wise)
 
-    st.write(plot_map(country_wise, 'cases'))
-    st.write(plot_map(country_wise, 'deaths'))
-    st.write(plot_map(country_wise, 'deaths_per_1m_population'))
-
+    st.title("Covid Live maps")
+    map_option = st.selectbox("Select map type",['cases','deaths','deaths_per_1m_population'])
+    st.write(plot_map(country_wise, map_option))
 
 
 elif choice == "Performance Metrics":
-    st.write(counts_bar(data))
-    st.write(metrics_plotly(metrics = ['accuracy','loss','val_accuracy','val_loss'], title = 'Accuracy & Loss Plot'))
-    st.write(metrics_plotly(metrics = ['accuracy','val_accuracy'], title = 'Accuracy Plot'))
-    st.write(metrics_plotly(metrics = ['loss','val_loss'], title = 'Loss Plot'))
+    
+    labels = list(data['label'].value_counts().keys())
+    label_counts = data['label'].value_counts().values
+    st.write(counts_bar(data, labels, label_counts))
+
+    st.write(metrics_plotly(history,metrics = ['accuracy','loss','val_accuracy','val_loss'], title = 'Accuracy & Loss Plot'))
+    st.write(metrics_plotly(history,metrics = ['accuracy','val_accuracy'], title = 'Accuracy Plot'))
+    st.write(metrics_plotly(history,metrics = ['loss','val_loss'], title = 'Loss Plot'))
     st.image('output/figures/cm.png')
     st.sidebar.markdown("### Prediction Preview")
     st.sidebar.image('output/figures/pred.png', width = 300)
