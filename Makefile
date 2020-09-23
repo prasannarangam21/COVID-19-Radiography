@@ -7,11 +7,10 @@
 PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 BUCKET = [OPTIONAL] your-bucket-for-syncing-data (do not include 's3://')
 PROFILE = default
-PYTHON_INTERPRETER = python
+PYTHON_INTERPRETER = python3
 
 PROJECT_NAME = covid
-# dropbox url
-MODEL = https://www.dropbox.com/s/rxqfw6reppuxjwn/base_model_covid.h5?dl=1 
+MODEL = https://storage.googleapis.com/dracarys3_bucket/covid/output/models/inference/base_model_covid_2.h5
 ifeq (,$(shell which conda))
 HAS_CONDA=False
 else
@@ -28,7 +27,7 @@ requirements:
 	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt
 
 ## Make Dataset
-ETL: requirements data
+ETL: kaggle_setup requirements data
 kaggle_setup: kaggle
 data: directory_setup ct_scans_download
 train: train_model
@@ -49,7 +48,6 @@ kaggle:
 
 model_download:
 	wget -c $(MODEL) -O output/models/inference/base_model_covid.h5 -q --show-progress
-
 
 ## Train Model
 train_model:
