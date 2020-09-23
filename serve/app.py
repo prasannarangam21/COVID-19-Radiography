@@ -1,6 +1,5 @@
 """Covid Radiology
 - Project Description
-- Covid Description
 - DL Description
 - VGG16 Description
 """
@@ -40,7 +39,7 @@ from src.data.preprocess import covid_stats
 from src.config import rapid_api_key, PRETRAINED_MODEL, PROCESSED_DATA_PATH, class_dict
 
 #============================ About ==========================
-def about():
+def Summary():
 
     st.info("Built with Streamlit by [Prasanna 😎](https://github.com/prasannarangam21)")
 
@@ -68,7 +67,7 @@ st.sidebar.markdown("Made with by [Prasanna](https://github.com/prasannarangam21
 
 
 st.sidebar.info(__doc__)
-activities = ["Data Visualization","Detector","Performance Metrics","About"]
+activities = ["Data Visualization","Detector","Performance Metrics","Summary"]
 choice = st.sidebar.radio("Go to", activities)
 
 k.clear_session()
@@ -169,6 +168,5 @@ elif choice == "Performance Metrics":
     st.sidebar.markdown("### Prediction Preview")
     st.sidebar.image('output/figures/pred.png', width = 300)
 
-elif choice == "About":
-    about()
-
+elif choice == "Summary":
+    Summary()
