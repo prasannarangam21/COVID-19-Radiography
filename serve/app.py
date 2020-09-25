@@ -147,7 +147,7 @@ elif choice == "Data Visualization":
 
     country_wise, updated_at = covid_stats(response)
     st.title("Country wise data")
-    st.write("**Data Updated at**: {}".format(updated_at))
+    st.write("**Data Updated at**: {} UTC/GMT+0 Timezone".format(updated_at))
     st.write(country_wise)
 
     st.title("Covid Live maps")
