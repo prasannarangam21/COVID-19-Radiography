@@ -77,6 +77,5 @@ Directory Tree
 2.Python
 3.Streamlit
 4.Docker
-5.AWS(S3)
 
 
