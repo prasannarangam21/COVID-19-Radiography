@@ -7,7 +7,7 @@
 PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 BUCKET = [OPTIONAL] your-bucket-for-syncing-data (do not include 's3://')
 PROFILE = default
-PYTHON_INTERPRETER = python3
+PYTHON_INTERPRETER = python
 
 PROJECT_NAME = covid
 MODEL = https://storage.googleapis.com/dracarys3_bucket/covid/output/models/inference/base_model_covid_2.h5
@@ -27,7 +27,7 @@ requirements:
 	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt
 
 ## Make Dataset
-ETL: kaggle_setup requirements data
+ETL: kaggle_setup requirements data model_download
 kaggle_setup: kaggle
 data: directory_setup ct_scans_download
 train: train_model
@@ -41,7 +41,7 @@ ct_scans_download:
 	$(PYTHON_INTERPRETER) src/data/make_dataset.py
 
 kaggle:
-	mkdir ~/.kaggle
+	mkdir -p ~/.kaggle
 	cp kaggle.json ~/.kaggle/
 	ls ~/.kaggle
 	chmod 600 ~/.kaggle/kaggle.json
