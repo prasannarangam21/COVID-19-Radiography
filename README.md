@@ -1,8 +1,15 @@
+[![Contributors][contributors-shield]][contributors-url] 
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![Apache License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][https://www.linkedin.com/in/lprangam/]
+
 <h2 align="center">Covid-19 Radiography</h>
 
   <h4 align="center">
   <p align="center">
-    Detects Covid-19 and Pneumonia using CT-scans & Deep Learning
+    Detects Covid-19 and Pneumonia using X-Ray & Deep Learning
     </h4>
   </p>
 </p>
@@ -74,8 +81,8 @@ Directory Tree
 
 ## Technologies Used
 1.Tensorflow,Keras
-2.Python
-3.Streamlit
+2.Python Pandas
+3.Streamlit Plotly
 4.Docker
 
 
