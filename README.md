@@ -3,7 +3,7 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![Apache License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][https://www.linkedin.com/in/lprangam/]
+[![LinkedIn][linkedin-shield]][https://www.linkedin.com/]
 
 <h2 align="center">Covid-19 Radiography</h>
 
