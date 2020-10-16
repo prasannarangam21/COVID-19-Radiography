@@ -2,8 +2,6 @@
 
 """Covid Radiology
 - Project Description
-- Covid Description
-- DL Description
 - VGG16 Description
 """
 
@@ -44,11 +42,12 @@ from src.models.inference import predict_label
 from src.visualization.visualize import metrics_plotly, plot_map, counts_bar
 from src.config import rapid_api_key, PRETRAINED_MODEL, PROCESSED_DATA_PATH, class_dict, sample_images_dict
 
-#============================ About ==========================
+#============================ Summary ==========================
 
-def about():
+def Summary():
 
-    st.info("Built with Streamlit by [Prasanna Rangam](http://www.github.com/)")
+    #st.info("Built with Streamlit by [Prasanna Rangam](https://github.com/prasannarangam21)")
+    st.info("The project was primarily made to tackle a myth - Deep Learning is only useful for Big Data")
 
 #================================= Functions =================================
 
@@ -87,17 +86,17 @@ img_size = 400
 
 #================================= Info for sidebar and common to all pages =================================
 
-st.sidebar.markdown("## COVID-19 Coronal CT-scan classification")
-st.sidebar.markdown("Made with :heart: by [Prasanna rangam](http://www.github.com/)")
+st.sidebar.markdown("## COVID-19 Coronal X-Ray classification")
+st.sidebar.markdown("Made by [Prasanna Rangam](https://github.com/prasannarangam21)")
 
 
 st.sidebar.info(__doc__)
-activities = ["Data Visualization","CT-scan Classifier","Performance Metrics","About"]
+activities = ["Data Visualization","X-Ray Classifier","Performance Metrics","Summary"]
 choice = st.sidebar.radio("Go to", activities)
 
 #================================= CT-scan Classifier section =================================
 
-if choice == "CT-scan Classifier":
+if choice == "X-Ray Classifier":
 
     k.clear_session()
     model = keras_load_model(PRETRAINED_MODEL)
@@ -198,7 +197,7 @@ elif choice == "Performance Metrics":
     st.sidebar.image('output/figures/pred.png', width = 300)
 
 
-#================================= About section =================================
+#================================= Summary section =================================
 
-elif choice == "About":
-    about()
+elif choice == "Summary":
+    Summary()
